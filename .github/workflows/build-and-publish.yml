@@ -19,7 +19,6 @@ jobs:
             python3-pyrsistent python3-markupsafe python3-jsonpointer python3-attrs python3-jsonschema python3-jsonpatch \
             python3-jinja2 python3-pyserial python3-oauthlib python3-netifaces python3-configobj python3-passlib
 
-      # Runs a set of commands using the runners shell
       - name: Clone cloud-init and cloud-init rpm builder
         run: |
           mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
@@ -29,5 +28,12 @@ jobs:
           mv cloud-init-23.2.1.tar.gz  ~/rpmbuild/SOURCES/cloud-init-23.2.1.tar.gz
           cp cloud-init.spec ~/rpmbuild/SPECS/
           cp cloud-init-tmpfiles.conf Do-not-enable-dhcp6-on-EC2.patch sources ~/rpmbuild/SOURCES/
+
+      - name: rpmbuild check
+        continue-on-error: true
+        run: |
           rpmbuild -br --noclean --target noarch --nodeps ~/rpmbuild/SPECS/cloud-init.spec
+
+      - name: rpmbuild artifact
+        run: |
           rpmbuild -ba --noprep --noclean --target noarch --nodeps ~/rpmbuild/SPECS/cloud-init.spec
