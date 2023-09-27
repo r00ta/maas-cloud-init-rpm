@@ -6,7 +6,7 @@
 
 Name:           cloud-init
 Version:        23.2.1
-Release:        %autorelease
+Release:        1%{?dist}
 Summary:        Cloud instance init scripts
 License:        Apache-2.0 OR GPL-3.0-only
 URL:            https://github.com/canonical/cloud-init
@@ -33,6 +33,8 @@ BuildRequires:  /usr/bin/dnf
 BuildRequires:  python3dist(pytest)
 BuildRequires:  python3dist(pytest-mock)
 BuildRequires:  python3dist(responses)
+BuildRequires:	python3dist(passlib)
+BuildRequires:  procps
 %endif
 
 Requires:       dhcp-client
@@ -167,4 +169,9 @@ python3 -m pytest tests/unittests -k "not test_platform_viable_but_no_devs_shoul
 
 
 %changelog
+%if %{defined autochangelog}
 %autochangelog
+%else
+* Mon May 01 2023 r00ta <jacopo.r00ta@gmail.com>
+- Placeholder changelog for envs that are not autochangelog-ready
+%endif
