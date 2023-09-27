@@ -22,6 +22,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Clone cloud-init and cloud-init rpm builder
         run: |
+          mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
           git clone https://github.com/canonical/cloud-init.git /tmp/cloud-init-23.2.1/
           cp * /tmp/cloud-init-23.2.1/
           tar czf cloud-init-23.2.1.tar.gz -C /tmp/cloud-init-23.2.1/ .
