@@ -23,7 +23,7 @@ jobs:
       - name: Clone cloud-init and cloud-init rpm builder
         run: |
           git clone https://github.com/canonical/cloud-init.git /tmp/cloud-init-23.2.1/
-          cp * /tmp/cloud-init-src
+          cp * /tmp/cloud-init-23.2.1/
           tar czf cloud-init-23.2.1.tar.gz -C /tmp/cloud-init-23.2.1/ .
           mv cloud-init-23.2.1.tar.gz  ~/rpmbuild/SOURCES/cloud-init-23.2.1.tar.gz
           mv cloud-init.spec ~/rpmbuild/SPECS/
