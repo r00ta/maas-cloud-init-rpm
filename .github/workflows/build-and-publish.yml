@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: fedora:39
+    container: fedora:38
     
     steps:
       - uses: actions/checkout@v3
