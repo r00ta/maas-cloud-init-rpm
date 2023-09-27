@@ -27,6 +27,7 @@ jobs:
           cp * /tmp/cloud-init-23.2.1/
           tar czf cloud-init-23.2.1.tar.gz -C /tmp cloud-init-23.2.1/
           mv cloud-init-23.2.1.tar.gz  ~/rpmbuild/SOURCES/cloud-init-23.2.1.tar.gz
-          mv cloud-init.spec ~/rpmbuild/SPECS/
+          cp cloud-init.spec ~/rpmbuild/SPECS/
+          cp cloud-init-tmpfiles.conf Do-not-enable-dhcp6-on-EC2.patch sources ~/rpmbuild/SOURCES/
           rpmbuild -br --noclean --target noarch --nodeps ~/rpmbuild/SPECS/cloud-init.spec
           rpmbuild -ba --noprep --noclean --target noarch --nodeps ~/rpmbuild/SPECS/cloud-init.spec
