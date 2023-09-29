@@ -4,5 +4,5 @@ srpm:
 	tar czf cloud-init-main.tar.gz -C /tmp cloud-init-main/
 	mv cloud-init-main.tar.gz /builddir/build/SOURCES/
 	cp $(spec) /builddir/build/SPECS/
-	rpmbuild -bs --noclean --target noarch --nodeps /builddir/build/cloud-init.spec
+	rpmbuild -bs --noclean --target noarch --nodeps /builddir/build/SPECS/cloud-init.spec
 	cp /builddir/build/SRPMS/* $(outdir)
