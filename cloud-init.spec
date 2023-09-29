@@ -19,7 +19,8 @@ Group:          System Environment/Base
 License:        Dual-licesed GPLv3 or Apache 2.0
 URL:            https://github.com/canonical/cloud-init 
 
-Source0:        https://github.com/canonical/cloud-init/archive/refs/heads/main.zip
+Source0:        cloud-init-main.tar.gz
+
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}
 
