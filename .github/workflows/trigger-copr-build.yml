@@ -1,0 +1,16 @@
+name: Trigger COPR build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Trigger COPR build
+        env: 
+          COPR_WEBHOOK_URL:  ${{ secrets.COPR_WEBHOOK_URL }}
+        run: |
+          curl -X POST $COPR_WEBHOOK_URL
+        
