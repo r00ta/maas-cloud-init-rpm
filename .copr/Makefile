@@ -5,5 +5,10 @@ srpm:
 	tar czf cloud-init-main.tar.gz -C /tmp cloud-init-main/
 	mv cloud-init-main.tar.gz ~/rpmbuild/SOURCES/
 	cp $(spec) ~/rpmbuild/SPECS/
+	pwd
+	ls
+	ls /builddir/build/
+	ls ~/rpmbuild/
+	pwd ~/rpmbuild/
 	rpmbuild -bs --noclean --target noarch --nodeps ~/rpmbuild/SPECS/cloud-init.spec
 	cp ~/rpmbuild/SRPMS/* $(outdir)
