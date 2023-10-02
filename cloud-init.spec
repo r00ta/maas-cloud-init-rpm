@@ -165,8 +165,6 @@ python3 -m pytest tests/unittests
 %config(noreplace) %{_sysconfdir}/cloud/templates/*
 %dir               %{_sysconfdir}/rsyslog.d
 %config(noreplace) %{_sysconfdir}/rsyslog.d/21-cloudinit.conf
-%{_sysconfdir}/NetworkManager/dispatcher.d/hook-network-manager
-%{_sysconfdir}/dhcp/dhclient-exit-hooks.d/hook-dhclient
 %{_udevrulesdir}/66-azure-ephemeral.rules
 %{_unitdir}/cloud-config.service
 %{_unitdir}/cloud-final.service
