@@ -4,7 +4,7 @@
 %bcond_without tests
 %endif
 
-Name:           cloud-init
+Name:           maas-cloud-init
 Version:        23.2.2
 Release:        %autorelease
 Summary:        Cloud instance init scripts
