@@ -45,6 +45,7 @@ BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-responses
 BuildRequires:  python3-tox
+BuildRequires:  python3-passlib
 # dnf is needed to make cc_ntp unit tests work
 # https://bugs.launchpad.net/cloud-init/+bug/1721573
 BuildRequires:  /usr/bin/dnf
