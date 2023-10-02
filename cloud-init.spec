@@ -6,6 +6,7 @@ License:        Apache-2.0 OR GPL-3.0-only
 URL:            https://github.com/r00ta/cloud-init
 
 Source0:        cloud-init-main.tar.gz
+Source1:        cloud-init-tmpfiles.conf
 
 BuildArch:      noarch
 
