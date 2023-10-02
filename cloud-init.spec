@@ -38,6 +38,7 @@ BuildRequires:  python3-requests
 BuildRequires:  python3-six
 BuildRequires:  python3-netifaces
 %if %{with tests}
+BuildRequires:  procps
 BuildRequires:  iproute
 BuildRequires:  passwd
 BuildRequires:  python3-httpretty >= 0.8.14-2
