@@ -1,18 +1,40 @@
+%if 0%{?rhel}
+%bcond_with tests
+%else
+%bcond_without tests
+%endif
+
 Name:           cloud-init
-Version:        23.2.2
+Version:        23.2.1
 Release:        %autorelease
 Summary:        Cloud instance init scripts
 License:        Apache-2.0 OR GPL-3.0-only
-URL:            https://github.com/r00ta/cloud-init
+URL:            https://github.com/canonical/cloud-init
 
 Source0:        cloud-init-main.tar.gz
 Source1:        cloud-init-tmpfiles.conf
+
+# Enabling dhcp6 on EC2 causes a broken IPv6 configuration.
+# See RHBZ 2092459.
+Patch0:         Do-not-enable-dhcp6-on-EC2.patch
 
 BuildArch:      noarch
 
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(systemd)
+
+%if %{with tests}
+BuildRequires:  iproute
+BuildRequires:  passwd
+# dnf is needed to make cc_ntp unit tests work
+# https://bugs.launchpad.net/cloud-init/+bug/1721573
+BuildRequires:  /usr/bin/dnf
+BuildRequires:  python3dist(pytest)
+BuildRequires:  python3dist(pytest-mock)
+BuildRequires:  python3dist(responses)
+%endif
+
 Requires:       dhcp-client
 Requires:       hostname
 Requires:       e2fsprogs
@@ -28,13 +50,21 @@ Requires:       xfsprogs
 Requires:       gdisk
 Requires:       openssl
 
+%{?systemd_requires}
+
+
 %description
 Cloud-init is a set of init scripts for cloud instances.  Cloud instances
 need special scripts to run during initialization to retrieve and install
 ssh keys and to let the user run various scripts.
 
+
 %prep
 %setup -q -n cloud-init-main
+
+# Change shebangs
+sed -i -e 's|#!/usr/bin/env python|#!/usr/bin/env python3|' \
+       -e 's|#!/usr/bin/python|#!/usr/bin/python3|' tools/* cloudinit/ssh_util.py
 
 # Removing shebang manually because of rpmlint, will update upstream later
 sed -i -e 's|#!/usr/bin/python||' cloudinit/cmd/main.py
@@ -133,5 +163,3 @@ python3 -m pytest tests/unittests
 %dir /run/cloud-init
 %dir /var/lib/cloud
 %{_datadir}/bash-completion/completions/cloud-init
-
-
