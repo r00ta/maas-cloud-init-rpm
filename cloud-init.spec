@@ -14,10 +14,6 @@ URL:            https://github.com/canonical/cloud-init
 Source0:        cloud-init-main.tar.gz
 Source1:        cloud-init-tmpfiles.conf
 
-# Enabling dhcp6 on EC2 causes a broken IPv6 configuration.
-# See RHBZ 2092459.
-Patch0:         Do-not-enable-dhcp6-on-EC2.patch
-
 BuildArch:      noarch
 
 BuildRequires:  systemd-rpm-macros
