@@ -12,7 +12,7 @@
 
 Name:           cloud-init
 Version:        23.2.1
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        Cloud instance init scripts
 
 Group:          System Environment/Base
