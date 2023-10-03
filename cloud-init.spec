@@ -56,7 +56,7 @@ ssh keys and to let the user run various scripts.
 
 
 %prep
-%autosetup -p1
+%autosetup -q -n cloud-init-main
 
 # Change shebangs
 sed -i -e 's|#!/usr/bin/env python|#!/usr/bin/env python3|' \
