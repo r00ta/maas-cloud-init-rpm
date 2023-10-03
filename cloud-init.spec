@@ -180,7 +180,7 @@ python3 -m pytest tests/unittests
 %{_unitdir}/sshd-keygen@.service.d/disable-sshd-keygen-if-cloud-init-active.conf
 %{_tmpfilesdir}/%{name}.conf
 %{python3_sitelib}/*
-%{_libexecdir}/%{name}
+%{_libexecdir}/cloud-init
 %{_bindir}/cloud-init*
 %{_bindir}/cloud-id
 %dir /run/cloud-init
